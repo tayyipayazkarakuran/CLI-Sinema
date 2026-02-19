@@ -1,0 +1,111 @@
+@import "tailwindcss";
+
+@theme {
+  --font-mono: 'JetBrains Mono', monospace;
+}
+
+:root {
+  --terminal-bg: #0c0c0c;
+  --terminal-color: #00ff41;
+  --terminal-dim: rgba(0, 255, 65, 0.5);
+}
+
+/* Themes */
+.theme-green {
+  --terminal-color: #00ff41;
+  --terminal-dim: rgba(0, 255, 65, 0.5);
+}
+
+.theme-amber {
+  --terminal-color: #ffb000;
+  --terminal-dim: rgba(255, 176, 0, 0.5);
+}
+
+.theme-blue {
+  --terminal-color: #0088ff;
+  --terminal-dim: rgba(0, 136, 255, 0.5);
+}
+
+.theme-white {
+  --terminal-color: #ffffff;
+  --terminal-dim: rgba(255, 255, 255, 0.5);
+}
+
+.theme-red {
+  --terminal-color: #ff0000;
+  --terminal-dim: rgba(255, 0, 0, 0.5);
+}
+
+.theme-fallout {
+  --terminal-color: #14f414;
+  --terminal-dim: rgba(20, 244, 20, 0.5);
+}
+
+body {
+  background-color: var(--terminal-bg);
+  color: var(--terminal-color);
+  font-family: var(--font-mono);
+  overflow: hidden;
+}
+
+/* Utility Classes */
+.text-terminal { color: var(--terminal-color); }
+.bg-terminal { background-color: var(--terminal-color); }
+.border-terminal { border-color: var(--terminal-color); }
+.placeholder-terminal::placeholder { color: var(--terminal-dim); }
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 8px; height: 8px; }
+::-webkit-scrollbar-track { background: var(--terminal-bg); }
+::-webkit-scrollbar-thumb { background: var(--terminal-dim); border: 1px solid var(--terminal-bg); }
+::-webkit-scrollbar-thumb:hover { background: var(--terminal-color); }
+
+/* CRT Effects */
+.scanlines {
+  background: linear-gradient(to bottom, rgba(255,255,255,0), rgba(255,255,255,0) 50%, rgba(0,0,0,0.2) 50%, rgba(0,0,0,0.2));
+  background-size: 100% 4px;
+  position: fixed; inset: 0; pointer-events: none; z-index: 50; opacity: 0.6;
+}
+
+.crt-vignette {
+  position: fixed; inset: 0; pointer-events: none; z-index: 51;
+  background: radial-gradient(circle, rgba(0,0,0,0) 60%, rgba(0,0,0,0.4) 80%, rgba(0,0,0,0.8) 100%);
+  box-shadow: inset 0 0 150px rgba(0,0,0,0.9);
+}
+
+.crt-curve {
+  position: fixed; inset: 0; z-index: 52; pointer-events: none;
+  box-shadow: inset 0 0 100px rgba(0,0,0,0.9);
+  border: 1px solid rgba(0, 255, 65, 0.1);
+  border-radius: 20px;
+}
+
+body::before {
+  content: " "; display: block; position: absolute; inset: 0;
+  background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06));
+  z-index: 2; background-size: 100% 2px, 3px 100%; pointer-events: none; border-radius: 20px;
+}
+
+.crt-flicker {
+  animation: flicker 0.15s infinite; pointer-events: none; position: fixed; inset: 0;
+  background: rgba(0, 255, 65, 0.02); z-index: 49;
+}
+
+@keyframes flicker {
+  0% { opacity: 0.9; } 50% { opacity: 1.0; } 100% { opacity: 0.9; }
+}
+
+/* Glitch Animation */
+@keyframes glitch-skew {
+  0% { transform: skew(0deg); }
+  20% { transform: skew(-2deg); }
+  40% { transform: skew(2deg); }
+  60% { transform: skew(-1deg); }
+  80% { transform: skew(1deg); }
+  100% { transform: skew(0deg); }
+}
+
+.glitch-effect {
+  animation: glitch-skew 3s infinite linear alternate-reverse;
+}
+

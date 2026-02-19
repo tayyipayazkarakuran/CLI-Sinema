@@ -1,0 +1,5 @@
+{
+  "name": "Terminal Cinema",
+  "description": "A terminal-style interface for browsing and watching movies/TV shows using TMDB and VidSrc.",
+  "requestFramePermissions": []
+}
