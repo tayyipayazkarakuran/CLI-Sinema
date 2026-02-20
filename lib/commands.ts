@@ -58,19 +58,6 @@ MEVCUT KOMUTLAR:
     case 'temizle':
       return { type: 'clear' };
 
-    case 'theme':
-    case 'tema':
-      const color = args[0]?.toLowerCase();
-      const validThemes = ['green', 'amber', 'blue', 'white', 'red', 'fallout', 'yesil', 'kehribar', 'mavi', 'beyaz', 'kirmizi'];
-      if (!validThemes.includes(color)) {
-        return { type: 'error', content: 'Geçersiz tema. (Invalid theme). Options: green, amber, blue, white, red, fallout' };
-      }
-      // Map Turkish names to English
-      const themeMap: {[key: string]: string} = {
-        'yesil': 'green', 'kehribar': 'amber', 'mavi': 'blue', 'beyaz': 'white', 'kirmizi': 'red'
-      };
-      return { type: 'theme', data: themeMap[color] || color };
-
     case 'animation':
     case 'animasyon':
     case 'matrix': // Backward compatibility
