@@ -137,7 +137,7 @@ export default function FalloutBackground() {
 
       <div className="absolute bottom-12 right-12 text-terminal opacity-70 font-bold text-sm hidden md:block text-right tracking-widest">
         <div className="mb-2 flex items-center justify-end gap-3">
-          <span className="animate-pulse text-red-500">RADS</span>
+          <span className="text-red-500">RADS</span>
           <div className="border-2 border-terminal px-3 py-1 bg-[var(--terminal-color)]/10">12</div>
         </div>
         <div className="w-48 h-3 border border-terminal p-[1px] ml-auto">
@@ -149,13 +149,10 @@ export default function FalloutBackground() {
       <div className="absolute top-10 left-0 w-full flex justify-center gap-12 text-terminal opacity-80 font-bold text-lg tracking-[0.2em] pointer-events-none">
         <span className="opacity-40 hover:opacity-100 transition-opacity">STAT</span>
         <span className="opacity-40 hover:opacity-100 transition-opacity">INV</span>
-        <span className="border-b-4 border-terminal pb-1 px-2 shadow-[0_0_10px_currentColor]">DATA</span>
+        <span className="border-b-4 border-terminal pb-1 px-2">DATA</span>
         <span className="opacity-40 hover:opacity-100 transition-opacity">MAP</span>
         <span className="opacity-40 hover:opacity-100 transition-opacity">RADIO</span>
       </div>
-      
-      {/* Glitch Overlay Effect */}
-      <div className="absolute inset-0 bg-[var(--terminal-color)] opacity-[0.02] mix-blend-screen animate-pulse pointer-events-none"></div>
     </div>
   );
 }
