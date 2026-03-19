@@ -8,10 +8,11 @@ interface VideoPlayerProps {
   type: 'movie' | 'tv';
   season?: number;
   episode?: number;
+  color?: string;
   onClose: () => void;
 }
 
-export default function VideoPlayer({ tmdbId, type, season = 1, episode = 1, onClose }: VideoPlayerProps) {
+export default function VideoPlayer({ tmdbId, type, season = 1, episode = 1, color = '00ff41', onClose }: VideoPlayerProps) {
   const [isMaximized, setIsMaximized] = useState(false);
 
   useEffect(() => {
@@ -42,22 +43,22 @@ export default function VideoPlayer({ tmdbId, type, season = 1, episode = 1, onC
   }, [tmdbId, type, season, episode]);
 
   const url = type === 'movie' 
-    ? `https://player.videasy.net/movie/${tmdbId}?color=00ff41`
-    : `https://player.videasy.net/tv/${tmdbId}/${season}/${episode}?color=00ff41&nextEpisode=true&autoplayNextEpisode=true&episodeSelector=true`;
+    ? `https://player.videasy.net/movie/${tmdbId}?color=${color}`
+    : `https://player.videasy.net/tv/${tmdbId}/${season}/${episode}?color=${color}&nextEpisode=true&autoplayNextEpisode=true&episodeSelector=true`;
 
   return (
-    <div className={`fixed z-50 transition-all duration-300 ease-in-out border border-[#00ff41] bg-black shadow-[0_0_20px_rgba(0,255,65,0.3)] ${
+    <div className={`fixed z-50 transition-all duration-300 ease-in-out border border-[var(--terminal-color)] bg-black shadow-[0_0_20px_var(--terminal-dim)] ${
       isMaximized ? 'inset-0' : 'inset-4 md:inset-10 lg:inset-20'
     }`}>
-      <div className="flex justify-between items-center bg-[#00ff41] text-black px-2 py-1 font-mono text-sm">
+      <div className="flex justify-between items-center bg-[var(--terminal-color)] text-black px-2 py-1 font-mono text-sm">
         <span className="font-bold">
           OYNATILIYOR: {type.toUpperCase()} {tmdbId} {type === 'tv' ? `S${season}B${episode}` : ''}
         </span>
         <div className="flex gap-2">
-          <button onClick={() => setIsMaximized(!isMaximized)} className="hover:bg-black hover:text-[#00ff41] p-1">
+          <button onClick={() => setIsMaximized(!isMaximized)} className="hover:bg-black hover:text-[var(--terminal-color)] p-1">
             {isMaximized ? <Minimize2 size={16} /> : <Maximize2 size={16} />}
           </button>
-          <button onClick={onClose} className="hover:bg-black hover:text-[#00ff41] p-1">
+          <button onClick={onClose} className="hover:bg-black hover:text-[var(--terminal-color)] p-1">
             <X size={16} />
           </button>
         </div>

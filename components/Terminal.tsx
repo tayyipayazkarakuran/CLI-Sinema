@@ -322,7 +322,7 @@ export default function Terminal() {
                   {item.data.type === 'list' && (
                     <div className="grid grid-cols-1 gap-4">
                       {item.data.items.slice(0, 10).map((media: any) => (
-                        <div key={media.id} className="flex gap-4 group hover:bg-terminal/10 p-2 transition-colors cursor-pointer"
+                        <div key={media.id} className="flex gap-4 group hover:bg-[var(--terminal-color)]/10 p-2 transition-colors cursor-pointer"
                              onClick={() => {
                                setInput(`info ${media.id} ${media.media_type || (media.title ? 'movie' : 'tv')}`);
                                inputRef.current?.focus();
@@ -351,7 +351,7 @@ export default function Terminal() {
                   )}
 
                   {item.data.type === 'details' && (
-                    <div className="flex flex-col md:flex-row gap-6 bg-terminal/5 p-4 border border-terminal/20">
+                    <div className="flex flex-col md:flex-row gap-6 bg-[var(--terminal-color)]/5 p-4 border border-terminal/20">
                       {item.data.item.poster_path && (
                         <div className="relative w-48 h-72 flex-shrink-0 mx-auto md:mx-0">
                           <Image 
@@ -374,7 +374,7 @@ export default function Terminal() {
                         
                         <div className="pt-4 flex gap-4">
                           <button 
-                            className="bg-terminal text-black px-4 py-2 font-bold hover:bg-white transition-colors"
+                            className="bg-[var(--terminal-color)] text-black px-4 py-2 font-bold hover:bg-white transition-colors"
                             onClick={() => {
                               setPlayData({ 
                                 id: item.data.item.id, 
@@ -438,6 +438,7 @@ export default function Terminal() {
               type={playData.type} 
               season={playData.season} 
               episode={playData.episode} 
+              color={theme === 'fallout' ? '14f414' : '00ff41'}
               onClose={() => setIsPlaying(false)} 
             />
           </motion.div>

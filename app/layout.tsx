@@ -16,7 +16,7 @@ export const metadata: Metadata = {
 export default function RootLayout({children}: {children: React.ReactNode}) {
   return (
     <html lang="en" className={jetbrainsMono.variable}>
-      <body suppressHydrationWarning className="antialiased font-mono bg-[#0c0c0c] text-[#00ff41] min-h-screen w-screen overflow-hidden">
+      <body suppressHydrationWarning className="antialiased font-mono bg-[var(--terminal-bg)] text-[var(--terminal-color)] min-h-screen w-screen overflow-hidden">
         <div className="scanlines" />
         <div className="crt-flicker" />
         <div className="crt-vignette" />
